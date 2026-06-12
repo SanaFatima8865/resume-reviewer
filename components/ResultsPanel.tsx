@@ -2,33 +2,7 @@
 
 import { useState } from 'react'
 import ScoreCircle from './ScoreCircle'
-
-interface Keyword {
-  keyword: string
-  importance: 'Critical' | 'Important' | 'Nice to have'
-  context: string
-}
-
-interface Strength {
-  point: string
-  detail: string
-}
-
-interface Rewrite {
-  original: string
-  improved: string
-  reason: string
-}
-
-interface AnalysisResult {
-  matchScore: number
-  scoreLabel: string
-  summary: string
-  missingKeywords: Keyword[]
-  strengths: Strength[]
-  rewrites: Rewrite[]
-  quickWins: string[]
-}
+import type { AnalysisResult } from '@/lib/types'
 
 interface ResultsPanelProps {
   result: AnalysisResult
@@ -76,7 +50,7 @@ export default function ResultsPanel({ result }: ResultsPanelProps) {
   return (
     <div className="space-y-4">
       {/* Score header */}
-      <div className={`fade-up fade-up-1 rounded-xl p-6 flex flex-col sm:flex-row items-center gap-6`}
+      <div className="fade-up fade-up-1 rounded-xl p-6 flex flex-col sm:flex-row items-center gap-6"
         style={{ background: 'linear-gradient(135deg, #162035 0%, #1E2D47 100%)', border: '1px solid rgba(14,165,160,0.2)' }}>
         <ScoreCircle score={result.matchScore} label={result.scoreLabel} />
         <div className="flex-1 text-center sm:text-left">

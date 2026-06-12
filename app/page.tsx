@@ -4,6 +4,7 @@ import { useState } from 'react'
 import ResultsPanel from '@/components/ResultsPanel'
 import SkeletonLoader from '@/components/SkeletonLoader'
 import PdfUpload from '@/components/PdfUpload'
+import type { AnalysisResult } from '@/lib/types'
 
 const SAMPLE_JD = `Senior Full-Stack Engineer — FinTech Startup
 
@@ -42,15 +43,6 @@ JavaScript, React, Node.js, Express, MongoDB, Git, HTML, CSS
 EDUCATION
 BSc Computer Science — State University, 2019`
 
-interface AnalysisResult {
-  matchScore: number
-  scoreLabel: string
-  summary: string
-  missingKeywords: Array<{ keyword: string; importance: string; context: string }>
-  strengths: Array<{ point: string; detail: string }>
-  rewrites: Array<{ original: string; improved: string; reason: string }>
-  quickWins: string[]
-}
 
 type ResumeInputMode = 'paste' | 'pdf'
 
