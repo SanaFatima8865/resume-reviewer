@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import pdfParse from 'pdf-parse'
 
-export const config = {
-  api: { bodyParser: false },
-}
+export const runtime = 'nodejs'
 
 export async function POST(req: NextRequest) {
   try {
@@ -29,8 +27,8 @@ export async function POST(req: NextRequest) {
     const data = await pdfParse(buffer)
 
     const text = data.text
-      .replace(/\r\n/g, '\n')       // normalize line endings
-      .replace(/\n{3,}/g, '\n\n')   // collapse excess blank lines
+      .replace(/\r\n/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
       .trim()
 
     if (!text || text.length < 50) {
